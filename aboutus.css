@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        *{
+            font-family: Poppins;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+            
+        header {
+                background-color: #3e3e3e;
+                color: white;
+                padding: 8px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            
+            .nav-links {
+                display: flex;
+                align-items: center;
+            }
+            
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                margin-left: 30px;
+                font-size: 16px;
+            }
+            
+            .logout-btn {
+                background-color: black;
+                padding: 9px 20px;
+                border: none;
+                color: white;
+                cursor: pointer;
+                margin-left: 30px;
+                margin-bottom:  10px;
+                border-radius: 0%;
+                font-size: 13.5px;
+                font-weight: bold;
+            }
+            
+        
+        .about-us {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+            margin: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 55vh;
+            font-size: 25px;
+        }
+        .content{
+            padding-top: 30px;
+        }
+        button {
+            font-size: 20px;
+            margin-top: 15px;
+            background-color:#3e3e3e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #444;
+        }
+        footer {
+            background-color: #3e3e3e;
+            color: white;
+            padding: 30px 40px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-left {
+            width: 50%;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact .icon {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-right {
+            width: 50%;
+            text-align: right;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 15px;
+            background-color: white;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #000;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 25px;
+            font-size: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .vehicle-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-left, .footer-right {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-right {
+                margin-top: 20px;
+            }
+        }

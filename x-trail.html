@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="x-trail.css">
+    <script src="lc300.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">DRIVE EASE</div>
+        <div class="nav-links">
+            <a href="driveease.html">HOME</a>
+            <a href="cars.html">CARS</a>
+            <a href="aboutus.html">ABOUT DRIVE EASE</a>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="suv.html" class="back-button">
+            <span class="back-icon">&lt;</span>
+            <span>Back</span>
+        </a>
+
+        <div class="content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Car Info Card -->
+                <div class="card">
+                    <h2 class="card-title">Car Info</h2>
+                    <p class="card-subtitle">Details about the Car</p>
+                    <ul class="info-list">
+                        <li>Model: X-Trail 2.5L 4x4</li>
+                        <li>Year: 2020</li>
+                        <li>Condition: Second Hand (Well Maintained)</li>
+                        <li>Mileage: 30,000 km </li>
+                        <li>Engine: 2.5L Inline-4 Gasoline</li>
+                        <li>Transmission: Continuously Variable Transmission (CVT)</li>
+                        <li>Fuel Efficiency: Approx. 8-10 km/L (City), 12-14 km/L (Highway)</li>
+                        <li>Seating Capacity: 5 Seats (Leather Upholstery)</li>
+                    </ul>
+                </div>
+
+                <!-- Billing Info Card -->
+                <div class="card">
+                    <h2 class="card-title">Billing Info</h2>
+                    <p class="card-subtitle">Please enter your billing info</p>
+                    
+                    <form>
+                        <div class="form-row">
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-input" placeholder="Your name" required>
+                                </div>
+                            </div>
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-input" placeholder="Phone number" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-input" placeholder="Address" required>
+                                </div>
+                            </div>
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">Town / City</label>
+                                    <input type="text" class="form-input" placeholder="Town or city" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Payment Method Card -->
+                <div class="card">
+                    <h2 class="card-title">Payment Method</h2>
+                    <p class="card-subtitle">Please enter your payment method</p>
+                    
+                    <div class="payment-options">
+                        <label class="radio-group">
+                            <input type="radio" name="payment" class="radio-input" checked>
+                            Cash Payment (On-Site Only)
+                        </label>
+                        
+                        <label class="radio-group">
+                            <input type="radio" name="payment" class="radio-input">
+                            Installment Payment
+                        </label>
+                        
+                        <div class="payment-row">
+                            <div class="payment-column">
+                                <div class="form-group">
+                                    <label class="form-label">Initial Down Payment (20%)</label>
+                                    <input type="text" class="form-input" value="₱ 1,120,000" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-column">
+                                <div class="form-group">
+                                    <label class="form-label">Monthly Payments</label>
+                                    
+                                    <label class="radio-group">
+                                        <input type="radio" name="term" class="radio-input" checked>
+                                        1 year (12 months) - ₱92,400/Month
+                                    </label>
+                                    
+                                    <label class="radio-group">
+                                        <input type="radio" name="term" class="radio-input">
+                                        2 years (24 months) - ₱50,720/Month
+                                    </label>
+                                    
+                                    <label class="radio-group">
+                                        <input type="radio" name="term" class="radio-input">
+                                        3 years (36 months) - ₱37,380/Month
+                                    </label>
+                                    
+                                    <label class="radio-group">
+                                        <input type="radio" name="term" class="radio-input">
+                                        4 years (48 months) - ₱30,880/Month
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title">Summary</h2>
+                    
+                    <div class="car-summary">
+                        <img src="pictures/X-Trail-.png" alt="Toyota Land Cruiser" class="car-image">
+                        <h3 class="car-title">Honda CR-V</h3>
+                        <p class="car-description">
+                            The Nissan X-Trail is a versatile SUV built for comfort and adventure, offering a spacious interior, advanced safety features, and excellent handling. With its all-terrain capabilities and flexible seating, the X-Trail is ideal for family trips, outdoor activities, and urban exploration alike. Buy the Nissan X-Trail through DriveEase for a reliable and stylish ride that adapts to every journey.
+                        </p>
+                    </div>
+                    
+                    <div class="price-row">
+                        <span>Subtotal</span>
+                        <span class="price">₱1,200,000</span>
+                    </div>
+                    
+                    <div class="price-row price-total">
+                        <span>Total Price</span>
+                        <span class="price">₱1,200,000</span>
+                    </div>
+                    <p class="card-subtitle">Overall price</p>
+                    
+                    <button class="book-btn" onclick="openpopup()">Book Now</button> 
+                    <div class="popup" id="popup-overlay">
+                        <div class="popup-content">
+                          <div class="success-icon">
+                            <div class="checkmark"></div>
+                          </div>
+                          <h1 class="booking">Booking <span>Succeeded!</span></h1>
+                          <p class="note">Please note that all payments must be made on-site at our physical store. We do not accept online or bank payments. Kindly proceed to our location to complete your payment and finalize your booking.</p>
+                          <br>
+                          <a href="driveease.html" button class="home-button" >Go back to Home Page</button></a>
+                        </div>
+                      </div>
+                </div>
+                <script>
+                    let popup = document.getElementById("popup-overlay");
+                    function openpopup(){
+                        popup.classList.add("open-popup");
+                    }
+                   
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">DRIVE EASE</div>
+                <div class="footer-contact">
+                    <span class="icon">📍</span>
+                    <p>W376+CGQ, Normal Rd, Zamboanga, 7000 Zamboanga del Sur</p>
+                </div>
+                <div class="footer-contact">
+                    <span class="icon">📞</span>
+                    <p>+63 965 220 1575</p>
+                </div>
+                <div class="footer-contact">
+                    <span class="icon">.</span>
+                    <a href="mailto:driveease_rental@gmail.com">driveease@gmail.com</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/francis.miravilla" class="social-icon" target="_blank">
+                        <img src="pictures/image.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/fddm_p/" class="social-icon" target="_blank">
+                        <img src="pictures/Instagram_logo_2022.svg.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-icon" target="_blank">
+                        <img src="pictures/X-Logo.png" alt="Twitter">
+                    </a>
+                </div>
+                <p class="copyright">Copyright © 2024 DRIVE EASE</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

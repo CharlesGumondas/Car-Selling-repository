@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+         * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Poppins;
+    }
+    
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+    
+    .sidebar {
+      width: 200px;
+      background-color: #3e3e3e;
+      border-right: 1px solid #e0e0e0;
+    }
+    
+    .header {
+      background-color: #2d2e36;
+      color: white;
+      padding: 15px 20px;
+      font-weight: bold;
+      font-size: 18px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .main-menu {
+      padding: 10px 0;
+      padding-top: 50px;
+    }
+    
+    .menu-title {
+      padding: 5px 15px;
+      font-size: 25px;
+      color: #c3c3c3;
+      font-weight: bold;
+    }
+    
+    .bookings {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fbfbfb;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .client {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #666;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .logout {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #666;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    
+    
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    
+    .content-header {
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .btn-dark {
+      background-color: #2d2e36;
+      color: white;
+      border: none;
+    }
+    
+    .transaction {
+       margin-right: 540px;
+       font-size: 25px;
+       font-weight: bold;
+    }
+    
+    .btn-gray {
+      background-color: #5a5a5a;
+      color: white;
+      border: none;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    thead {
+      background-color: #3e3e3e;
+      color: white;
+    }
+    
+    th {
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: normal;
+      font-size: 14px;
+    }
+    
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 14px;
+    }
+    
+    .car-img {
+      width: 120px;
+      height: 80px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+    
+    .car-cell {
+      display: flex;
+      align-items: center;
+    }
+    
+    .car-details {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .car-model {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .car-type {
+      font-size: 12px;
+      color: #777;
+      margin-top: 2px;
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .completed {
+      background-color: #e6f0f9;
+      color: #2271b1;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    
+    .page-numbers {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    
+    .page-number {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .page-number.active {
+      background-color: #e0e0e0;
+    }
+    
+    .arrow {
+      cursor: pointer;
+      color: #666;
+      padding: 0 5px;
+    }
+    
+    .per-page {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .ellipsis {
+      color: #666;
+    }
+    
+    .dashboard-header {
+      background-color: #3e3e3e;
+      color: white;
+      padding: 20px;
+      width: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="main-menu">
+      <div class="menu-title">MAIN MENU</div>
+      <a href="#" class="bookings">
+        <span>Bookings</span>
+      </a>
+      <a href="clientPage.html" class="client">
+        <span>Client</span>
+      </a>
+      <a href="adminlogin.html" class="logout">
+        <span>Log Out</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    <div class="dashboard-header">DRIVE EASE</div>
+    <div class="button-container">
+        <h1 class="transaction">Recent Transaction</h1>
+        <a href="updatecar.html" target="_blank"><button class="btn btn-gray">Update Cars</button></a>
+      <a href="addcars.html" target="_blank"><button class="btn btn-dark">Add Cars</button></a>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Car Model</th>
+          <th>Price</th>
+          <th>Date</th>
+          <th>Payment Method</th>
+          <th>Downpayment</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="car-cell">
+            <img src="pictures/gtr.png" alt="Nissan GT-R" class="car-img">
+            <div class="car-details">
+              <span class="car-model">Nissan GT - R</span>
+              <span class="car-type">Sport Car</span>
+            </div>
+          </td>
+          <td>₱ 7,600,000</td>
+          <td>Dec 22, 2024</td>
+          <td>Installment - 2 years</td>
+          <td>₱ 1,120,000</td>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="pagination">
+      <div class="per-page">
+        Results per page: 1
+        <span>▼</span>
+      </div>
+      <div class="page-numbers">
+        <span class="arrow">←</span>
+        <span class="page-number active">1</span>
+        <span class="page-number">2</span>
+        <span class="page-number">3</span>
+        <span class="page-number">4</span>
+        <span class="page-number">5</span>
+        <span class="page-number">6</span>
+        <span class="ellipsis">...</span>
+        <span class="page-number">10</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
