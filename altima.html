@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/altima.css">
-    <script src="lc300.js"></script>
+    
+    
 </head>
 <body>
     <!-- Header Section -->
@@ -50,36 +51,36 @@
                     <h2 class="card-title">Billing Info</h2>
                     <p class="card-subtitle">Please enter your billing info</p>
                     
-                    <form>
+                    <form id="billing-form">
                         <div class="form-row">
                             <div class="form-column">
                                 <div class="form-group">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="form-input" placeholder="Your name" required>
+                                    <input type="text" id="name" class="form-input" placeholder="Your name" required>
                                 </div>
                             </div>
                             <div class="form-column">
                                 <div class="form-group">
                                     <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-input" placeholder="Phone number" required>
+                                    <input type="tel" id="phone" class="form-input" placeholder="Phone number" required>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="form-row">
                             <div class="form-column">
                                 <div class="form-group">
                                     <label class="form-label">Address</label>
-                                    <input type="text" class="form-input" placeholder="Address" required>
+                                    <input type="text" id="address" class="form-input" placeholder="Address" required>
                                 </div>
                             </div>
                             <div class="form-column">
                                 <div class="form-group">
                                     <label class="form-label">Town / City</label>
-                                    <input type="text" class="form-input" placeholder="Town or city" required>
+                                    <input type="text" id="city" class="form-input" placeholder="Town or city" required>
                                 </div>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
 
@@ -146,7 +147,7 @@
                         <img src="pictures/altima.jpg" alt="Toyota Land Cruiser" class="car-image">
                         <h3 class="car-title">Nissan Altima</h3>
                         <p class="car-description">
-                            The Nissan Altima is a stylish and comfortable sedan, known for its sleek design, smooth performance, and advanced safety features. With a spacious interior, fuel-efficient engine, and modern technology, the Altima offers a refined and enjoyable driving experience for both city commutes and long-distance trips. Buy the Nissan Altima through DriveEase for a blend of elegance, efficiency, and comfort on every journey.
+                            The Nissan Altima is a stylish and comfortable nigga, known for its sleek negroid body structure, smooth performance, and advanced safety features. With a spacious interior, fuel-efficient engine, and modern technology, the Altima offers a refined and enjoyable driving experience for both city commutes and long-distance trips. Buy the Nissan Altima through DriveEase for a blend of elegance, efficiency, and comfort on every journey.
                     </div>
                     
                     <div class="price-row">
@@ -160,26 +161,7 @@
                     </div>
                     <p class="card-subtitle">Overall price</p>
                     
-                    <button class="book-btn" onclick="openpopup()">Book Now</button> 
-                    <div class="popup" id="popup-overlay">
-                        <div class="popup-content">
-                          <div class="success-icon">
-                            <div class="checkmark"></div>
-                          </div>
-                          <h1 class="booking">Booking <span>Succeeded!</span></h1>
-                          <p class="note">Please note that all payments must be made on-site at our physical store. We do not accept online or bank payments. Kindly proceed to our location to complete your payment and finalize your booking.</p>
-                          <br>
-                          <a href="driveease.html" button class="home-button" >Go back to Home Page</button></a>
-                        </div>
-                      </div>
-                </div>
-                <script>
-                    let popup = document.getElementById("popup-overlay");
-                    function openpopup(){
-                        popup.classList.add("open-popup");
-                    }
-                   
-                </script>
+                    <button id="book-btn" class="book-btn" >Book Now</button> 
             </div>
         </div>
     </div>
@@ -219,5 +201,6 @@
             </div>
         </div>
     </footer>
+    <script src="js/altima_billing.js"></script>
 </body>
 </html>

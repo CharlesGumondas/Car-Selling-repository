@@ -209,7 +209,7 @@
                 <h2>Client Management</h2>
             </div>
             
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                         <th width="5%"></th>
@@ -221,58 +221,45 @@
                         <th width="10%">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>Abname Jay Urman</td>
-                        <td>09475671972</td>
-                        <td>Upper Calarian, Zamboanga City</td>
-                        <td>Installment - 2 years</td>
-                        <td>₱ 1,120,000</td>
-                        <td>
+                <tbody id="billing-table">
+                    
                             <button class="action-btn edit-btn">Edit</button>
                             <button class="action-btn delete-btn">Delete</button>
-                        </td>
+                        
                     </tr>
-                    <tr>
-                        <td><input type="checkbox" checked></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" checked></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                  
+                    
                     
                 </tbody>
             </table>
+            <script>
+                // Retrieve data from local storage
+                const billingData = JSON.parse(localStorage.getItem("billingData")) || [];
+            
+                // Check if the table body exists
+                const tableBody = document.getElementById("billing-table");
+                if (tableBody) {
+                    // Populate the table
+                    billingData.forEach((info) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td><input type="checkbox"></td>
+                            <td>${info.name}</td>
+                            <td>${info.phone}</td>
+                            <td>${info.fullAddress}</td>
+                            <td>${info.paymentType === "Installment Payment" ? "Installment" : "Cash"}</td>
+                            <td>${info.paymentType === "Installment Payment" ? info.monthlyPayment : "N/A"}</td>
+                            <td>
+                                <button class="action-btn edit-btn">Edit</button>
+                                <button class="action-btn delete-btn">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    console.error("Table body with ID 'billing-table' not found.");
+                }
+            </script>
             
             <div class="pagination">
                 <div class="page-info">Results per page: 1</div>
