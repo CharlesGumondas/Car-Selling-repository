@@ -184,6 +184,77 @@
             color: #1890ff;
             display: inline-block;
         }
+
+        
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #f44336;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-update {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-update:hover {
+    background-color: #45a049;
+}
+</style>
     </style>
 </head>
 <body>
@@ -223,8 +294,7 @@
                 </thead>
                 <tbody id="billing-table">
                     
-                            <button class="action-btn edit-btn">Edit</button>
-                            <button class="action-btn delete-btn">Delete</button>
+                        
                         
                     </tr>
                   
@@ -232,15 +302,54 @@
                     
                 </tbody>
             </table>
+            <!-- Edit Modal -->
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Edit Record</h2>
+        <form id="edit-form">
+            <div class="form-group">
+                <label for="edit-name">Name</label>
+                <input type="text" id="edit-name" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-phone">Phone Number</label>
+                <input type="text" id="edit-phone" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-address">Address</label>
+                <input type="text" id="edit-address" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-payment-type">Payment Type</label>
+                <select id="edit-payment-type" class="form-input">
+                    <option value="Cash Payment">Cash</option>
+                    <option value="Installment Payment">Installment</option>
+                </select>
+            </div>
+            <div class="form-group" id="edit-monthly-payment-group" style="display: none;">
+                <label for="edit-monthly-payment">Monthly Payment</label>
+                <input type="text" id="edit-monthly-payment" class="form-input">
+            </div>
+            <button type="button" id="save-changes" class="btn btn-update">Save Changes</button>
+        </form>
+    </div>
+</div>
             <script>
                 // Retrieve data from local storage
-                const billingData = JSON.parse(localStorage.getItem("billingData")) || [];
+                let billingData = JSON.parse(localStorage.getItem("billingData")) || [];
             
                 // Check if the table body exists
                 const tableBody = document.getElementById("billing-table");
+                const modal = document.getElementById("edit-modal");
+                const closeModal = document.querySelector(".close-btn");
+                const saveChangesBtn = document.getElementById("save-changes");
+            
+                let currentEditIndex = null; // To track the index of the record being edited
+            
                 if (tableBody) {
                     // Populate the table
-                    billingData.forEach((info) => {
+                    billingData.forEach((info, index) => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
                             <td><input type="checkbox"></td>
@@ -250,11 +359,89 @@
                             <td>${info.paymentType === "Installment Payment" ? "Installment" : "Cash"}</td>
                             <td>${info.paymentType === "Installment Payment" ? info.monthlyPayment : "N/A"}</td>
                             <td>
-                                <button class="action-btn edit-btn">Edit</button>
-                                <button class="action-btn delete-btn">Delete</button>
+                                <button class="action-btn edit-btn" data-index="${index}">Edit</button>
+                                <button class="action-btn delete-btn" data-index="${index}">Delete</button>
                             </td>
                         `;
                         tableBody.appendChild(row);
+                    });
+            
+                    // Add event listener to handle delete and edit button clicks
+                    tableBody.addEventListener("click", function (event) {
+                        const target = event.target;
+            
+                        // Handle delete button
+                        if (target.classList.contains("delete-btn")) {
+                            const index = target.getAttribute("data-index"); // Get the index of the row
+                            billingData.splice(index, 1); // Remove the item from the array
+                            localStorage.setItem("billingData", JSON.stringify(billingData)); // Update localStorage
+                            target.closest("tr").remove(); // Remove the row from the table
+                            alert("Record deleted successfully!");
+                        }
+            
+                        // Handle edit button
+                        if (target.classList.contains("edit-btn")) {
+                            const index = target.getAttribute("data-index"); // Get the index of the row
+                            const info = billingData[index]; // Get the data for the selected row
+                            currentEditIndex = index; // Store the index for saving changes
+            
+                            // Populate the modal fields
+                            document.getElementById("edit-name").value = info.name;
+                            document.getElementById("edit-phone").value = info.phone;
+                            document.getElementById("edit-address").value = info.fullAddress;
+                            document.getElementById("edit-payment-type").value = info.paymentType;
+                            document.getElementById("edit-monthly-payment").value = info.paymentType === "Installment Payment" ? info.monthlyPayment : "";
+            
+                            // Show or hide the monthly payment field based on payment type
+                            const monthlyPaymentGroup = document.getElementById("edit-monthly-payment-group");
+                            if (info.paymentType === "Installment Payment") {
+                                monthlyPaymentGroup.style.display = "block";
+                            } else {
+                                monthlyPaymentGroup.style.display = "none";
+                            }
+            
+                            // Show the modal
+                            modal.style.display = "block";
+                        }
+                    });
+            
+                    // Handle save changes button
+                    saveChangesBtn.addEventListener("click", function () {
+                        const newName = document.getElementById("edit-name").value.trim();
+                        const newPhone = document.getElementById("edit-phone").value.trim();
+                        const newAddress = document.getElementById("edit-address").value.trim();
+                        const newPaymentType = document.getElementById("edit-payment-type").value;
+                        const newMonthlyPayment = newPaymentType === "Installment Payment"
+                            ? document.getElementById("edit-monthly-payment").value.trim()
+                            : "N/A";
+            
+                        // Update the data in the array
+                        billingData[currentEditIndex] = {
+                            name: newName,
+                            phone: newPhone,
+                            fullAddress: newAddress,
+                            paymentType: newPaymentType,
+                            monthlyPayment: newMonthlyPayment,
+                        };
+            
+                        // Update localStorage
+                        localStorage.setItem("billingData", JSON.stringify(billingData));
+            
+                        // Reload the table
+                        alert("Record updated successfully!");
+                        location.reload();
+                    });
+            
+                    // Close the modal
+                    closeModal.addEventListener("click", function () {
+                        modal.style.display = "none";
+                    });
+            
+                    // Close the modal when clicking outside of it
+                    window.addEventListener("click", function (event) {
+                        if (event.target === modal) {
+                            modal.style.display = "none";
+                        }
                     });
                 } else {
                     console.error("Table body with ID 'billing-table' not found.");
@@ -278,5 +465,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
