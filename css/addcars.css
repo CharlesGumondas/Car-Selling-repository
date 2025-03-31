@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-*
 body {
+
     font-family: Poppins;
     max-width: 960px;
     margin: 20px auto;
@@ -60,17 +60,21 @@ input, select {
 .update-button {
     text-align: right;
     margin-top: 20px;
+    font-size: 10px;
 }
 
 .update-button button {
     background-color: #000;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
+    
 }
+
 
 .upload-section {
     margin-top: 20px;
@@ -91,3 +95,21 @@ input, select {
 .upload-button:hover {
     background-color: #555;
 }
+
+.description{
+    font-size: 18px;
+}
+#car-description{
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 4px;
+    border-width: 0px;
+    resize: none;
+}
+
+#car-description::placeholder{
+    color: #999;
+    font-family: 'Poppins';
+
+}
+
